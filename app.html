@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio - Nossa Equipe & Depoimentos</title>
+  <script src="js/script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      scroll-behavior: smooth;
+      padding-bottom: 60px;
+      /* Espaço para o menu fixo inferior */
+    }
+
+    .gradient-bg {
+      background: linear-gradient(90deg, #3e4633 6%, #585f40 56%, #314218f7 90%);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px #0000001a;
+    }
+
+    .portfolio-item {
+      transition: all 0.3s ease;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.02);
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px #0000001a;
+    }
+
+    .img-logo {
+      width: 150px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-left: -100px;
+      margin-top: -10px;
+      margin-bottom: -10px;
+      transition: width 0.3s, margin 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .img-logo {
+        width: 120px;
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .img-logo {
+        width: 90px;
+      }
+    }
+
+    .contato:hover {
+      color: #2b361c;
+
+    }
+
+    /* Sombra superior para o menu fixo inferior */
+    .shadow-t {
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilo do menu fixo inferior */
+    #menu-inferior {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      /* gray-200 */
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    #menu-inferior ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    #menu-inferior ul li a {
+      color: #4b5563;
+      /* gray-600 */
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    #menu-inferior ul li a:hover,
+    #menu-inferior ul li a.active {
+      color: #30361C;
+      /* cor personalizada */
+      font-weight: 600;
+    }
+
+    .seta {
+      width: 50px;
+      color: white;
+      margin: auto;
+      margin-top: -10px;
+      animation: bounce 2s infinite;
+    }
+
+    /* Animação de sobe e desce */
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- Header -->
+
+
+  <!-- Conteúdo do site (Hero, Portfolio, Serviços, Equipe, Depoimentos, Contato) -->
+  <!-- (Seu conteúdo permanece igual, omitido aqui para brevidade) -->
+
+  <!-- Menu fixo inferior -->
+  <nav id="menu-inferior" aria-label="Menu principal inferior">
+    <ul id="menu"></ul>
+  </nav>
+  <style>
+    .menu-ico {
+      width: 33px;
+      color: #30361C;
+      border-radius: 5px;
+      box-shadow: 5px 5px 10px #30361C;
+    }
+  </style>
+  <script>
+    // Itens do menu
+    const menuItems = [
+      { id: "portfolio", label: "" },
+      { id: "servicos", label: "" },
+      { id: "equipe", label: "" },
+      { id: "depoimentos", label: "" },
+      { id: "contato", label: "" },
+    ];
+
+    // Ícones SVG para cada item (como strings)
+    const menuIcons = {
+      portfolio: `
+   <svg class="menu-ico" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+</svg>
+
+  `,
+
+      servicos: `
+    <svg class="menu-ico" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
+</svg>
+
+  `,
+      equipe: `
+   <svg class="menu-ico time" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.5v-1.125A3.375 3.375 0 0 0 11.625 15h-4.5A3.375 3.375 0 0 0 3.75 18.375V19.5M18 20.25v-2.25a2.25 2.25 0 0 0-2.25-2.25h-.75M15 11.25a3 3 0 1 0-6 0 3 3 0 0 0 6 0ZM18.75 13.5a2.25 2.25 0 1 0-4.5 0 2.25 2.25 0 0 0 4.5 0Z" />
+</svg>
+
+  `,
+      depoimentos: `
+    <svg class="menu-ico" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+</svg>
+
+  `,
+      contato: `
+   <svg class="menu-ico" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+</svg>
+
+  `
+    };
+
+    const menu = document.getElementById("menu");
+
+    // Cria links do menu fixo inferior com ícones
+    function createMenuLinks(container) {
+      menuItems.forEach(item => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = `#${item.id}`;
+        a.className = "cursor-pointer flex items-center hover:text-[#30361C] transition-colors";
+        // Insere o ícone + texto
+        a.innerHTML = menuIcons[item.id] + `<span>${item.label}</span>`;
+        li.appendChild(a);
+        container.appendChild(li);
+      });
+    }
+
+    createMenuLinks(menu);
+
+    // Scrollspy para destacar item ativo
+    const sections = menuItems.map(item => document.getElementById(item.id));
+
+    function onScroll() {
+      const scrollPos = window.scrollY + window.innerHeight / 3;
+      let currentId = menuItems[0].id;
+
+      for (const section of sections) {
+        if (section && section.offsetTop <= scrollPos) {
+          currentId = section.id;
+        }
+      }
+
+      menu.querySelectorAll("a").forEach(a => {
+        if (a.getAttribute("href") === `#${currentId}`) {
+          a.classList.add("active");
+        } else {
+          a.classList.remove("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("load", onScroll);
+  </script>
+  <section class="gradient-bg text-white pt-32 pb-20">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        Criatividade que Transforma Negócios
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 opacity-90">
+        Soluções inovadoras com excelência e paixão pelo que fazemos
+      </p>
+      <svg class="seta size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+      </svg>
+
+    </div>
+  </section>
+  <style>
+
+  </style>
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Nosso Portfólio</h2>
+        <p class="text-xl text-gray-600">
+          Projetos que marcam a diferença e criam impacto
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Portfolio Item 1 -->
+        <div class="portfolio-item bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="h-48 overflow-hidden">
+            <img
+              src="img/logo-pequeno.png"
+              alt="Dashboard moderno de analytics com gráficos interativos e design limpo em tons azuis"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
+              Sistema de Analytics
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Plataforma completa de análise de dados com visualizações
+              interativas
+            </p>
+            <span class="inline-block bg-#30361C-100 text-#30361C-600 px-3 py-1 rounded-full text-sm">Web App</span>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 2 -->
+        <div class="portfolio-item bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/36255604-e87b-4f51-b93d-3ff37c32238f.png"
+              alt="Aplicativo móvel de e-commerce com interface moderna e produtos em destaque"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
+              App E-commerce
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Experiência de compra mobile-first com checkout simplificado
+            </p>
+            <span class="inline-block bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm">Mobile App</span>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 3 -->
+        <div class="portfolio-item bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1a2b3c4d5e6f7g8h9i0j.png"
+              alt="Website institucional moderno com design responsivo e navegação intuitiva"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #43cea2 0%, #185a9d 100%)'" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">
+              Website Institucional
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Site responsivo para apresentação corporativa com design clean
+            </p>
+            <span class="inline-block bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Website</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços Section -->
+  <section id="servicos" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Nossos Serviços</h2>
+        <p class="text-xl text-gray-600">
+          Oferecemos soluções completas para atender às suas necessidades
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- Serviço 1 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-16 w-16 text-#30361C-600 mb-6" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L15 12l-5.25-5" />
+          </svg>
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Desenvolvimento Web</h3>
+          <p class="text-gray-600">
+            Criação de sites e aplicações web responsivas, modernas e otimizadas para performance.
+          </p>
+        </div>
+
+        <!-- Serviço 2 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-16 w-16 text-#30361C-600 mb-6" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12a9 9 0 110-18 9 9 0 010 18z" />
+          </svg>
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Design Gráfico</h3>
+          <p class="text-gray-600">
+            Desenvolvimento de identidade visual, branding e materiais gráficos para sua marca.
+          </p>
+        </div>
+
+        <!-- Serviço 3 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-16 w-16 text-#30361C-600 mb-6" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h4l3 8 4-16 3 8h4" />
+          </svg>
+          <h3 class="text-2xl font-semibold mb-3 text-gray-800">Marketing Digital</h3>
+          <p class="text-gray-600">
+            Estratégias personalizadas para aumentar sua presença online e engajamento com o público.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Equipe Section -->
+  <section id="equipe" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Nossa Equipe</h2>
+        <p class="text-xl text-gray-600">
+          Profissionais dedicados que fazem a diferença
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <!-- Membro 1 -->
+        <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="João Silva - CEO"
+            class="mx-auto rounded-full w-32 h-32 object-cover mb-4" />
+          <h3 class="text-xl font-semibold text-gray-800">João Silva</h3>
+          <p class="text-#30361C-600 font-medium mb-2">CEO</p>
+          <p class="text-gray-600 text-sm">
+            Líder visionário com mais de 15 anos de experiência em inovação e
+            gestão.
+          </p>
+        </div>
+
+        <!-- Membro 2 -->
+        <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria Oliveira - Designer"
+            class="mx-auto rounded-full w-32 h-32 object-cover mb-4" />
+          <h3 class="text-xl font-semibold text-gray-800">Maria Oliveira</h3>
+          <p class="text-#30361C-600 font-medium mb-2">Designer</p>
+          <p class="text-gray-600 text-sm">
+            Criativa e detalhista, responsável pelo design visual e UX dos
+            projetos.
+          </p>
+        </div>
+
+        <!-- Membro 3 -->
+        <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300">
+          <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Carlos Pereira - Desenvolvedor"
+            class="mx-auto rounded-full w-32 h-32 object-cover mb-4" />
+          <h3 class="text-xl font-semibold text-gray-800">Carlos Pereira</h3>
+          <p class="text-#30361C-600 font-medium mb-2">Desenvolvedor</p>
+          <p class="text-gray-600 text-sm">
+            Especialista em front-end e back-end, entrega soluções robustas e
+            escaláveis.
+          </p>
+        </div>
+
+        <!-- Membro 4 -->
+        <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana Costa - Marketing"
+            class="mx-auto rounded-full w-32 h-32 object-cover mb-4" />
+          <h3 class="text-xl font-semibold text-gray-800">Ana Costa</h3>
+          <p class="text-#30361C-600 font-medium mb-2">Marketing</p>
+          <p class="text-gray-600 text-sm">
+            Estratégia e comunicação para conectar marcas e clientes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos Section -->
+  <section id="depoimentos" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Depoimentos</h2>
+        <p class="text-xl text-gray-600">
+          O que nossos clientes dizem sobre nós
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <!-- Depoimento 1 -->
+        <div class="testimonial-card bg-gray-50 rounded-xl p-8 shadow-md transition-transform duration-300">
+          <p class="text-gray-700 mb-6 italic">
+            "O time da StudioCreativo superou nossas expectativas. O projeto
+            foi entregue no prazo e com qualidade excepcional."
+          </p>
+          <div class="flex items-center space-x-4">
+            <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Cliente 1"
+              class="w-12 h-12 rounded-full object-cover" />
+            <div>
+              <p class="font-semibold text-gray-800">Fernanda Lima</p>
+              <p class="text-sm text-gray-500">CEO - Empresa XYZ</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 2 -->
+        <div class="testimonial-card bg-gray-50 rounded-xl p-8 shadow-md transition-transform duration-300">
+          <p class="text-gray-700 mb-6 italic">
+            "Profissionais dedicados e criativos. Recomendo para quem busca
+            inovação e qualidade."
+          </p>
+          <div class="flex items-center space-x-4">
+            <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="Cliente 2"
+              class="w-12 h-12 rounded-full object-cover" />
+            <div>
+              <p class="font-semibold text-gray-800">Ricardo Santos</p>
+              <p class="text-sm text-gray-500">Diretor - Startup ABC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 3 -->
+        <div class="testimonial-card bg-gray-50 rounded-xl p-8 shadow-md transition-transform duration-300">
+          <p class="text-gray-700 mb-6 italic">
+            "Excelente atendimento e suporte. A equipe sempre esteve disponível
+            para ajustes e melhorias."
+          </p>
+          <div class="flex items-center space-x-4">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente 3"
+              class="w-12 h-12 rounded-full object-cover" />
+            <div>
+              <p class="font-semibold text-gray-800">Juliana Ferreira</p>
+              <p class="text-sm text-gray-500">Gerente de Projetos - Corp DEF</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+  
+  </style>
+  <!-- Contato Section -->
+  <section id="contato" class="py-0">
+    <div class="container mx-auto px-6 max-w-3xl">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Contato</h2>
+        <p class="text-xl text-gray-600">
+          Conecte-se conosco através das redes sociais
+        </p>
+      </div>
+
+      <div class="flex justify-center space-x-7 ico-baixo">
+        <!-- Facebook -->
+        <a class="contato" href="https://facebook.com/seuPerfil" target="_blank" rel="noopener" aria-label="WhatsApp" border-radius="5px">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90" height="90" viewBox="0 0 32 52">
+<path fill-rule="evenodd" d="M 24.503906 7.503906 C 22.246094 5.246094 19.246094 4 16.050781 4 C 9.464844 4 4.101563 9.359375 4.101563 15.945313 C 4.097656 18.050781 4.648438 20.105469 5.695313 21.917969 L 4 28.109375 L 10.335938 26.445313 C 12.078125 27.398438 14.046875 27.898438 16.046875 27.902344 L 16.050781 27.902344 C 22.636719 27.902344 27.996094 22.542969 28 15.953125 C 28 12.761719 26.757813 9.761719 24.503906 7.503906 Z M 16.050781 25.882813 L 16.046875 25.882813 C 14.265625 25.882813 12.515625 25.402344 10.992188 24.5 L 10.628906 24.285156 L 6.867188 25.269531 L 7.871094 21.605469 L 7.636719 21.230469 C 6.640625 19.648438 6.117188 17.820313 6.117188 15.945313 C 6.117188 10.472656 10.574219 6.019531 16.054688 6.019531 C 18.707031 6.019531 21.199219 7.054688 23.074219 8.929688 C 24.949219 10.808594 25.980469 13.300781 25.980469 15.953125 C 25.980469 21.429688 21.523438 25.882813 16.050781 25.882813 Z M 21.496094 18.445313 C 21.199219 18.296875 19.730469 17.574219 19.457031 17.476563 C 19.183594 17.375 18.984375 17.328125 18.785156 17.625 C 18.585938 17.925781 18.015625 18.597656 17.839844 18.796875 C 17.667969 18.992188 17.492188 19.019531 17.195313 18.871094 C 16.894531 18.722656 15.933594 18.40625 14.792969 17.386719 C 13.90625 16.597656 13.304688 15.617188 13.132813 15.320313 C 12.957031 15.019531 13.113281 14.859375 13.261719 14.710938 C 13.398438 14.578125 13.5625 14.363281 13.710938 14.1875 C 13.859375 14.015625 13.910156 13.890625 14.011719 13.691406 C 14.109375 13.492188 14.058594 13.316406 13.984375 13.167969 C 13.910156 13.019531 13.3125 11.546875 13.0625 10.949219 C 12.820313 10.367188 12.574219 10.449219 12.390625 10.4375 C 12.21875 10.429688 12.019531 10.429688 11.820313 10.429688 C 11.621094 10.429688 11.296875 10.503906 11.023438 10.804688 C 10.75 11.101563 9.980469 11.824219 9.980469 13.292969 C 9.980469 14.761719 11.050781 16.183594 11.199219 16.382813 C 11.347656 16.578125 13.304688 19.59375 16.300781 20.886719 C 17.011719 21.195313 17.566406 21.378906 18 21.515625 C 18.714844 21.742188 19.367188 21.710938 19.882813 21.636719 C 20.457031 21.550781 21.648438 20.914063 21.898438 20.214844 C 22.144531 19.519531 22.144531 18.921875 22.070313 18.796875 C 21.996094 18.671875 21.796875 18.597656 21.496094 18.445313 Z"></path>
+</svg>
+        </a>
+        <!-- Instagram -->
+        <a class="contato" href="https://instagram.com/seuPerfil" target="_blank" rel="noopener" aria-label="Tiktok">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90" height="90" viewBox="0 0 32 52">
+            <path
+              d="M 9.6113281 5 C 7.0767063 5 5 7.0767063 5 9.6113281 L 5 22.388672 C 5 24.923294 7.0767063 27 9.6113281 27 L 22.388672 27 C 24.923294 27 27 24.923294 27 22.388672 L 27 9.6113281 C 27 7.0767063 24.923294 5 22.388672 5 L 9.6113281 5 z M 9.6113281 7 L 22.388672 7 C 23.84205 7 25 8.15795 25 9.6113281 L 25 22.388672 C 25 23.84205 23.84205 25 22.388672 25 L 9.6113281 25 C 8.15795 25 7 23.84205 7 22.388672 L 7 9.6113281 C 7 8.15795 8.15795 7 9.6113281 7 z M 17 9 L 17 19 C 17 20.116666 16.116666 21 15 21 C 13.883334 21 13 20.116666 13 19 C 13 17.883334 13.883334 17 15 17 L 15 15 C 12.802666 15 11 16.802666 11 19 C 11 21.197334 12.802666 23 15 23 C 17.197334 23 19 21.197334 19 19 L 19 12.888672 C 19.827834 13.529766 20.809277 13.98411 21.927734 14 L 21.957031 12 C 20.310764 11.976611 19 10.654231 19 9 L 17 9 z">
+            </path>
+          </svg>
+        </a>
+ <!-- add mais redes -->
+        <a class="contato" href="https://instagram.com/seuPerfil" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90" height="90" viewBox="0 0 32 52">
+            <path
+              d="M 11.46875 5 C 7.917969 5 5 7.914063 5 11.46875 L 5 20.53125 C 5 24.082031 7.914063 27 11.46875 27 L 20.53125 27 C 24.082031 27 27 24.085938 27 20.53125 L 27 11.46875 C 27 7.917969 24.085938 5 20.53125 5 Z M 11.46875 7 L 20.53125 7 C 23.003906 7 25 8.996094 25 11.46875 L 25 20.53125 C 25 23.003906 23.003906 25 20.53125 25 L 11.46875 25 C 8.996094 25 7 23.003906 7 20.53125 L 7 11.46875 C 7 8.996094 8.996094 7 11.46875 7 Z M 21.90625 9.1875 C 21.402344 9.1875 21 9.589844 21 10.09375 C 21 10.597656 21.402344 11 21.90625 11 C 22.410156 11 22.8125 10.597656 22.8125 10.09375 C 22.8125 9.589844 22.410156 9.1875 21.90625 9.1875 Z M 16 10 C 12.699219 10 10 12.699219 10 16 C 10 19.300781 12.699219 22 16 22 C 19.300781 22 22 19.300781 22 16 C 22 12.699219 19.300781 10 16 10 Z M 16 12 C 18.222656 12 20 13.777344 20 16 C 20 18.222656 18.222656 20 16 20 C 13.777344 20 12 18.222656 12 16 C 12 13.777344 13.777344 12 16 12 Z">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

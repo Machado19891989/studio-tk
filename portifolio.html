@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Belleza - Portfólio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f9c1d2 0%, #d4af37 50%, #f9c1d2 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .portfolio-item {
+            transition: all 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.02);
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="bg-rose-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-display font-bold text-gray-800">
+                <span class="text-rose-600">Studio</span>Belleza
+            </div>
+            <ul id="menu" class="hidden md:flex space-x-8 text-gray-600"></ul>
+            <button id="btn-menu" class="md:hidden text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile menu -->
+        <ul id="menu-mobile" class="md:hidden bg-white shadow-md hidden flex-col space-y-4 px-6 py-4 text-gray-600"></ul>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white pt-32 pb-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-display font-bold mb-6">Beleza que Transforma</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">Realçamos sua beleza natural com excelência e sofisticação</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#servicos" class="bg-white text-rose-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    Nossos Serviços
+                </a>
+                <a href="#contato" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-rose-600 transition-colors">
+                    Agendar Horário
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="servicos" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-800 mb-4">Nossos Serviços</h2>
+                <p class="text-xl text-gray-600">Cuidados especializados para realçar sua beleza</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Serviço 1 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Cortes e Penteados</h3>
+                    <p class="text-gray-600">Cortes modernos, coloração profissional e penteados para todas as ocasiões</p>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Maquiagem</h3>
+                    <p class="text-gray-600">Maquiagem profissional para dia a dia, noivas e eventos especiais</p>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 text-center transition-all duration-300">
+                    <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Estética Facial</h3>
+                    <p class="text-gray-600">Tratamentos faciais, limpeza de pele e cuidados especializados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio Section -->
+    <section id="portfolio" class="py-20 bg-rose-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-800 mb-4">Nosso Portfólio</h2>
+                <p class="text-xl text-gray-600">Transformações que falam por si</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e749a842-36cf-4132-88cd-b3b0d42f2bf0.png" alt="Modelo com corte moderno e coloração loira com mechas caramelizadas em salão elegante" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #f9c1d2 0%, #d4af37 100%)'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Corte Moderno</h3>
+                        <p class="text-gray-600">Transformação completa com corte e coloração</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/13af6a0f-657c-424c-9a45-df4c78bdaecc.png" alt="Noiva com maquiagem suave e penteado romântico com flores naturais no cabelo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #f9c1d2 0%, #ff6b6b 100%)'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Maquiagem de Noiva</h3>
+                        <p class="text-gray-600">Look romântico para o dia mais especial</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/169adb6b-85a4-41ab-a7aa-933d9b41df0d.png" alt="Tratamento facial profissional com produtos de luxo em ambiente spa relaxante" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #d4af37 0%, #f9c1d2 100%)'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Estética Facial</h3>
+                        <p class="text-gray-600">Cuidados especializados para pele radiante</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe Section -->
+    <section id="equipe" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-800 mb-4">Nossa Equipe</h2>
+                <p class="text-xl text-gray-600">Profissionais apaixonados por beleza</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Membro 1 -->
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Carla Silva - Hair Stylist" class="mx-auto rounded-full w-32 h-32 object-cover mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Carla Silva</h3>
+                    <p class="text-rose-600 font-medium mb-2">Hair Stylist</p>
+                    <p class="text-gray-600 text-sm">Especialista em cortes modernos e coloração</p>
+                </div>
+
+                <!-- Membro 2 -->
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Marina Oliveira - Maquiadora" class="mx-auto rounded-full w-32 h-32 object-cover mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Marina Oliveira</h3>
+                    <p class="text-rose-600 font-medium mb-2">Maquiadora</p>
+                    <p class="text-gray-600 text-sm">Especialista em maquiagem artística e de noivas</p>
+                </div>
+
+                <!-- Membro 3 -->
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300">
+                    <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Patrícia Costa - Esteticista" class="mx-auto rounded-full w-32 h-32 object-cover mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Patrícia Costa</h3>
+                    <p class="text-rose-600 font-medium mb-2">Esteticista</p>
+                    <p class="text-gray-600 text-sm">Especialista em tratamentos faciais e corporais</p>
+                </div>
+
+                <!-- Membro 4 -->
+                <div class="team-card bg-white rounded-xl shadow-lg p-6 text-center transition-transform duration-300">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Juliana Santos - Manicure" class="mx-auto rounded-full w-32 h-32 object-cover mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Juliana Santos</h3>
+                    <p class="text-rose-600 font-medium mb-2">Manicure</p>
+                    <p class="text-gray-600 text-sm">Especialista em alongamento e nail art</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section id="depoimentos" class="py-20 bg-rose-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-800 mb-4">Depoimentos</h2>
+                <p class="text-xl text-gray-600">O que nossas clientes dizem</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-white rounded-xl p-8 shadow-md">
+                    <div class="text-rose-400 text-4xl mb-4">"</div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "A equipe do Studio Belleza é incrível! Saí do salão me sentindo uma nova pessoa. Recomendo!"
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Cliente satisfeita" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-gray-800">Ana Paula</p>
+                            <p class="text-sm text-gray-500">Cliente há 2 anos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="bg-white rounded-xl p-8 shadow-md">
+                    <div class="text-rose-400 text-4xl mb-4">"</div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "Melhor salão da cidade! Profissionais qualificados e atendimento excepcional."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente satisfeita" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-gray-800">Maria Fernanda</p>
+                            <p class="text-sm text-gray-500">Cliente há 1 ano</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="bg-white rounded-xl p-8 shadow-md">
+                    <div class="text-rose-400 text-4xl mb-4">"</div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "Minha maquiagem de noiva ficou perfeita! Equipe muito atenciosa e profissional."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Noiva satisfeita" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-gray-800">Carolina</p>
+                            <p class="text-sm text-gray-500">Noiva</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-800 mb-4">Agende seu Horário</h2>
+                <p class="text-xl text-gray-600">Estamos ansiosos para cuidar de você</p>
+            </div>
+
+            <form class="bg-rose-50 rounded-xl shadow-lg p-8 space-y-6">
+                <div>
+                    <label for="nome" class="block text-gray-700 font-semibold mb-2">Nome completo</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Seu nome" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                </div>
+
+                <div>
+                    <label for="telefone" class="block text-gray-700 font-semibold mb-2">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                </div>
+
+                <div>
+                    <label for="servico" class="block text-gray-700 font-semibold mb-2">Serviço desejado</label>
+                    <select id="servico" name="servico" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                        <option value="">Selecione um serviço</option>
+                        <option value="corte">Corte de Cabelo</option>
+                        <option value="coloracao">Coloração</option>
+                        <option value="maquiagem">Maquiagem</option>
+                        <option value="estetica">Estética Facial</option>
+                        <option value="manicure">Manicure</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="bg-rose-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-rose-700 transition-colors w-full">
+                    Solicitar Agendamento
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-display font-bold mb-4">Studio Belleza</h3>
+                    <p class="text-gray-300">Transformando beleza em arte desde 2010</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Horário de Funcionamento</h4>
+                    <p class="text-gray-300">Seg a Sex: 8h-20h</p>
+                    <p class="text-gray-300">Sábado: 9h-18h</p>
+                    <p class="text-gray-300">Domingo: Fechado</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contato</h4>
+                    <p class="text-gray-300">Rua da Beleza, 123</p>
+                    <p class="text-gray-300">contato@studiobelleza.com</p>
+                    <p class="text-gray-300">(11) 3456-7890</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Siga-nos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-rose-400 transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-300 hover:text-rose-400 transition-colors">Facebook</a>
+                        <a href="#" class="text-gray-300 hover:text-rose-400 transition-colors">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 Studio Belleza. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Itens do menu
+        const menuItems = [
+            { id: "servicos", label: "Serviços" },
+            { id: "portfolio", label: "Portfólio" },
+            { id: "equipe", label: "Equipe" },
+            { id: "depoimentos", label: "Depoimentos" },
+            { id: "contato", label: "Contato" }
+        ];
+
+        // Referências
+        const menu = document.getElementById("menu");
+        const menuMobile = document.getElementById("menu-mobile");
+        const btnMenu = document.getElementById("btn-menu");
+
+        // Função para criar links do menu
+        function createMenuLinks(container, isMobile = false) {
+            menuItems.forEach(item => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = `#${item.id}`;
+                a.textContent = item.label;
+                a.className = "hover:text-rose-600 transition-colors cursor-pointer";
+                if (isMobile) {
+                    a.classList.add("block", "py-2");
+                } else {
+                    a.classList.add("transition-colors");
+                }
+                li.appendChild(a);
+                container.appendChild(li);
+            });
+        }
+
+        // Criar menus
+        createMenuLinks(menu);
+        createMenuLinks(menuMobile, true);
+
+        // Toggle menu mobile
+        btnMenu.addEventListener("click", () => {
+            menuMobile.classList.toggle("hidden");
+        });
+
+        // Scrollspy para destacar item ativo
+        const sections = menuItems.map(item => document.getElementById(item.id));
+
+        function onScroll() {
+            const scrollPos = window.scrollY + window.innerHeight / 3;
+            let currentId = menuItems[0].id;
+
+            for (const section of sections) {
+                if (section && section.offsetTop <= scrollPos) {
+                    currentId = section.id;
+                }
+            }
+
+            // Atualiza classes no menu desktop
+            menu.querySelectorAll("a").forEach(a => {
+                if (a.getAttribute("href") === `#${currentId}`) {
+                    a.classList.add("text-rose-600", "font-semibold");
+                } else {
+                    a.classList.remove("text-rose-600", "font-semibold");
+                }
+            });
+
+            // Atualiza classes no menu mobile
+            menuMobile.querySelectorAll("a").forEach(a => {
+                if (a.getAttribute("href") === `#${currentId}`) {
+                    a.classList.add("text-rose-600", "font-semibold");
+                } else {
+                    a.classList.remove("text-rose-600", "font-semibold");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", onScroll);
+        window.addEventListener("load", onScroll);
+    </script>
+</body>
+</html>
